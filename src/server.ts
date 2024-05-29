@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import { AppDataSource } from "./database/data-source";
+// import { AppDataSource } from "./database/data-source";
 
 dotenv.config();
 
@@ -16,12 +16,6 @@ app.get("/", (request: Request, response: Response) => {
   response.send('Hello 😚😚😚')
 })
 
-AppDataSource.initialize()
-  .then(() => {
-    app.listen(port, () => {
-      console.log('Servidor funcionando!!!!')
-    })
-  })
-  .catch((err) => {
-    console.error("Error during Data Source initialization", err)
-  })
+app.listen(port, () => {
+  console.log('Servidor funcionando!!!!')
+})
