@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
+import AppDataSource from './database/data-source'
 
 const app = express()
 
@@ -13,6 +14,7 @@ app.get('/', (request: Request, response: Response) => {
 })
 
 app.listen(port, () => {
+  AppDataSource.initialize()
   console.log(`Servidor funcionando na porta ${port}`)
 })
 
