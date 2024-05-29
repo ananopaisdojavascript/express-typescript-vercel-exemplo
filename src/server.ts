@@ -1,7 +1,15 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-// import { AppDataSource } from "./database/data-source";
+import { AppDataSource } from "./database/data-source";
+
+AppDataSource.initialize()
+  .then(() => {
+    console.log("Data Source has been initialized!")
+  })
+  .catch((err) => {
+    console.error("Error during Data Source initialization:", err)
+  })
 
 dotenv.config();
 
