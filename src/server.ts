@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import { AppDataSource } from "./database/data-source";
+import { Users } from "./entity/Users";
 
 AppDataSource.initialize()
   .then(() => {
@@ -20,8 +21,9 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-app.get("/", (request: Request, response: Response) => {
-  response.send('Hello 😚😚😚')
+app.get("/users", async (request: Request, response: Response) => {
+  const users = await AppDataSource.getRepository(Users).find()
+  response.json(users)
 })
 
 app.listen(port, () => {
