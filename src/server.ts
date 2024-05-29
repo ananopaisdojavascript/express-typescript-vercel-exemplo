@@ -1,21 +1,20 @@
+import express, { Request, Response } from "express";
 import cors from "cors";
-import express, { Application, Request, Response } from "express";
 import dotenv from "dotenv";
 
-dotenv.config()
+dotenv.config();
 
-const { DATABASE_PORT } = process.env
+const port = 3000
 
-const app: Application = express();
-const port = DATABASE_PORT || 3000
+const app = express()
 
 app.use(express.json())
 app.use(cors())
 
 app.get("/", (request: Request, response: Response) => {
-  response.send('😁😁😁😁😁')
+  response.send('Hello 😚😚😚')
 })
 
 app.listen(port, () => {
-  console.log(`Servidor funcionando na porta ${port}`)
+  console.log('Servidor funcionando!!!!')
 })
