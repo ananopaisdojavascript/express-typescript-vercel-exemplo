@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const port = 3000
+const port = process.env.DATABASE_PORT || 3000
 
 const app = express()
 
